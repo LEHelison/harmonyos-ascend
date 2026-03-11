@@ -1,0 +1,31 @@
+import router from '@ohos.router'
+@Entry
+@Component
+struct baoxiu {
+  build(){
+    Column(){
+      Row(){
+        Row(){
+          Image($r('app.media.u'))
+            .width(35)
+        }
+        .onClick(()=>{
+          router.back()
+        })
+        Row(){
+          Text('报修记录')
+            .fontSize(25)
+            .fontColor('#8a8a8a')
+            .fontWeight(FontWeight.Bold)
+            .margin({left:90})
+        }
+      }
+      .width('100%')
+      .height(50)
+    }
+    .width('100%')
+    .height('100%')
+    .backgroundImage($r("app.media.img"))
+    .backgroundImageSize({width:'100%',height:'700'})
+  }
+}

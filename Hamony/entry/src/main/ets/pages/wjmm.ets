@@ -1,0 +1,99 @@
+import router from '@ohos.router'
+@Entry
+@Component
+struct wjmm {
+  @State message: string = 'Hello World'
+
+  build() {
+    Column(){
+      Column(){
+        Text("重置密码")
+          .fontColor(Color.Grey)
+          .fontSize(30)
+        TextInput({placeholder:"请输入手机号"})
+          .width('90%')
+          .height(50)
+          .margin({
+            top:20
+          })
+
+        Row(){
+          TextInput({placeholder:"请输入短信验证码"})
+            .height(50)
+            .width(190)
+            .margin({
+              bottom:"10vp",
+              /*left:-140*/
+            })
+          Button("获取验证码")
+            .height(50)
+            .width(100)
+        }
+        .margin({
+          top:15
+        })
+        .width('90%')
+        TextInput({placeholder:"新密码"})
+          .type(InputType.Password)
+          .height(50)
+          .width('90%')
+          .margin({
+            top:15
+          })
+        TextInput({placeholder:"再次输入新密码"})
+          .type(InputType.Password)
+          .height(50)
+          .width('90%')
+          .margin({
+            top:15
+          })
+        Row(){
+          Button("返回登录")
+            .fontColor(Color.White)
+              /*.backgroundColor(Color.White)*/
+            .width(100)
+            .margin({
+              top:30
+            })
+            .onClick(()=>{
+              router.pushUrl({url:'pages/dengluyemian'})
+            })
+          Button("确认")
+            .fontColor(Color.White)
+              /*.backgroundColor(Color.White)*/
+            .width(100)
+            .margin({
+              top:30
+            })
+            .onClick(()=>{
+              router.pushUrl({url:"pages/dljm"})
+            })
+        }
+        .width('90%')
+        .justifyContent(FlexAlign.SpaceBetween)
+      }
+      .width('90%')
+      .height('50%')
+      .backgroundImage($r("app.media.qlbjt"))
+      .backgroundImageSize({
+        width:"100%",
+        height:"100%"
+      })
+      /*.backgroundColor(Color.Gray)*/
+      .padding({
+        top:30,
+        bottom:30
+      })
+      /* .borderColor(Color.Gray)*/
+      .margin({
+        top:150
+      })
+    }
+    .width("100%")
+    .height("100%")
+    .backgroundImage($r("app.media.img"))
+    .backgroundImageSize({width:'100%',height:'100%'})
+
+
+  }
+}

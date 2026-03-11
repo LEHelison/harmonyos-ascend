@@ -1,0 +1,53 @@
+import router from '@ohos.router'
+@Entry
+@Component
+struct kongzhi {
+  build(){
+    Column(){
+      //远程控制
+      Row(){
+        Image($r('app.media.a'))
+          .width(30)
+          .margin({top:10})
+          .onClick(()=>{
+            router.back()
+          })
+        Text('远程控制')
+          .fontSize(25)
+          .fontWeight(FontWeight.Bold)
+          .margin({top:10,left:90})
+      }
+      .width('100%')
+      .height(50)
+      //图片
+      Row(){
+        Image($r('app.media.t'))
+      }
+      .width('80%')
+      .height(100)
+      .margin({top:50})
+      //搜索
+      Row(){
+        Search({placeholder:'请输入设备名称'})
+          .textFont({size:20})
+          .borderColor('#1296db')
+          .borderWidth('1')
+          .borderRadius(10)
+      }
+      .width('80%')
+      .margin({top:50})
+      //连接
+      Row(){
+        Button('立即连接')
+          .width('100%')
+          .borderRadius(10)
+      }
+      .width('80%')
+      .margin({top:20})
+    }
+    .width('100%')
+    .height('100%')
+    .backgroundImage($r("app.media.img"))
+    .backgroundImageSize({width:'100%',height:'100%'})
+  }
+}

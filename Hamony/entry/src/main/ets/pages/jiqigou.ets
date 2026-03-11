@@ -1,0 +1,163 @@
+import webview from '@ohos.web.webview';
+import { router } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct jiqigou {
+
+  webController: webview.WebviewController = new webview.WebviewController();
+
+  build() {
+    Column(){
+      Stack(){
+        //地图
+        Column(){
+          Column(){
+            Row(){
+              Button('<')
+                .width(60)
+                .height(36)
+                .fontSize(14)
+                .fontColor('#1A1A1A')
+                .backgroundColor('rgba(255, 255, 255, 0.8)')
+                .borderRadius(18)
+                .onClick(() => {
+                  router.back()
+                })
+              //狗览全局
+              Text('动态监测')
+                .fontColor(Color.Black)
+                .fontSize(22)
+                .fontWeight(FontWeight.Medium)
+                .margin({left:140})
+              //
+              Image($r('app.media.kongzhi'))
+                .width(25)
+                .margin({left:150})
+                .onClick(()=>{
+                  router.push({url:'pages/Dogkongzhi'})
+                })
+            }
+            .width('100%')
+            Text('自动化巡检')
+              .margin({top:30,right:205})
+              .fontColor(Color.Black)
+              .fontSize(20)
+          }
+          .justifyContent(FlexAlign.Center)
+          .width('96%')
+          .height('20%')
+          //地图
+          Column(){
+            Web({
+              src: "http://192.168.31.181:5000",
+              controller: this.webController
+            })
+              .borderRadius(30)
+              .width('90%')
+              .height('100%')
+          }
+          .borderRadius(140)
+          .width('100%')
+          .height('100%')
+        }
+        .backgroundImage($r('app.media.img'))
+        .backgroundImageSize({width:'100%',height:'100%'})
+        .width('100%')
+        .height('100%')
+        //电量
+        Column(){
+          Row(){
+            Text('机器狗电量')
+              .fontSize(15)
+              .fontColor(Color.Black)
+          }
+          .width('95%')
+          .height(40)
+          Row(){
+            Text('剩余电量：')
+              .fontColor(Color.Black)
+              .fontSize(15)
+              .fontWeight(FontWeight.Medium)
+              .margin({left:8})
+            Text('55%')
+              .fontColor(Color.Green)
+              .fontSize(15)
+              .fontWeight(FontWeight.Medium)
+              .margin({left:3})
+            Image($r('app.media.dianchi'))
+              .width(20)
+              .margin({left:3})
+            Text('可用时长：')
+              .fontColor(Color.Black)
+              .fontSize(15)
+              .fontWeight(FontWeight.Medium)
+              .margin({left:43})
+            Text('8h')
+              .fontColor(Color.Green)
+              .fontSize(15)
+              .fontWeight(FontWeight.Medium)
+              .margin({left:3})
+            Image($r('app.media.shichang'))
+              .width(15)
+              .margin({left:3})
+          }
+          .borderRadius(15)
+          .backgroundColor(Color.White)
+          .height(40)
+          .width('95%')
+        }
+        .onClick(()=>{
+          router.push({url:'pages/dianliang'})
+        })
+        .margin({top:200})
+        .backgroundColor('#faf9f9')
+        .borderRadius(20)
+        .width('98%')
+        .height(100)
+        //机器狗定位
+        Column(){
+          Row(){
+            Text('机器狗位置')
+              .fontSize(15)
+          }
+          .width('100%')
+          .height(40)
+          Row(){
+            Text('经度：117.27')
+              .margin({left:8})
+              .fontSize(15)
+              .fontWeight(FontWeight.Medium)
+            //连接后端
+            Text('')
+              .fontSize(20)
+              .margin({left:5})
+            Text('纬度：36.63')
+              .fontSize(15)
+              .fontWeight(FontWeight.Medium)
+              .margin({left:73})
+            //连接后端
+            Text('')
+              .fontSize(20)
+              .margin({left:5})
+          }
+          .borderRadius(20)
+          .backgroundColor(Color.White)
+          .width('90%')
+          .height('40')
+        }
+        .backgroundColor('#faf9f9')
+        .margin({top:700})
+        .width('95%')
+        .height(100)
+        .borderRadius(20)
+
+      }
+      .width('100%')
+      .height('100%')
+
+    }
+    .width('100%')
+    .height('100%')
+  }
+}

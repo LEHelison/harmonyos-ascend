@@ -1,0 +1,13 @@
+{
+  "ssh": {
+    "default_port": 22,
+    "default_username": "root",
+    "default_password": "Mind@123",
+    "connection_timeout": 10,
+    "command_timeout": 30
+  },
+  "monitoring": {
+    "metrics_interval": 60,
+    "node_exporter_port": 9100
+  }
+} 
